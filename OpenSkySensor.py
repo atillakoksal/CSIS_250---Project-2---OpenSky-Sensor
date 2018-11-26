@@ -53,10 +53,6 @@ class OpenSkySensor(SensorX):
         super().__init__(os.path.join(os.path.dirname(__file__), self.__class__.__name__))
         logging.info("Sensor  " + self.__class__.__name__ + " ready to be called")
 
-    #    self.f_dict = {}
-    #   Implementing the required methods
-    #
-
     def has_updates(self, k):
         """ Returns updates if request is allowed based on aircraft icao24 id (k value) & there is content """
         if self._request_allowed():
@@ -122,7 +118,7 @@ class OpenSkySensor(SensorX):
                 if (int(degree) > f_track) and (int(degree) - f_track) < 45:
                     true_track = sensor.TRACK_LIST[degree]
                 else:
-                    true_tractk = sensor.TRACK_LIST['315']
+                    true_tract = sensor.TRACK_LIST['315']
             return true_track
 
         except (KeyError, ValueError, TypeError) as e:
