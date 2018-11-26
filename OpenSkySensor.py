@@ -112,13 +112,13 @@ class OpenSkySensor(SensorX):
                 return None
 
             for degree in sensor.TRACK_LIST:
-                if (int(degree) - f_track) <= 1:
+                if abs(int(degree) - f_track) <= 1:
+                    true_track = sensor.TRACK_LIST[degree]                
+                elif (int(degree) > f_track) and (int(degree) - f_track) < 45:
                     true_track = sensor.TRACK_LIST[degree]
-
-                if (int(degree) > f_track) and (int(degree) - f_track) < 45:
-                    true_track = sensor.TRACK_LIST[degree]
-                else:
+                elif f_track > 315
                     true_tract = sensor.TRACK_LIST['315']
+            
             return true_track
 
         except (KeyError, ValueError, TypeError) as e:
